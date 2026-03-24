@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="DigitalShoppingCenter.Api/DigitalShoppingCenter.Api.csproj" />
+  <Project Path="DigitalShoppingCenter.Domain/DigitalShoppingCenter.Domain.csproj" />
+</Solution>
