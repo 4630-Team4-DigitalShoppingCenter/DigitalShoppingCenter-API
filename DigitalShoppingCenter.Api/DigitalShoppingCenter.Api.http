@@ -1,6 +1,40 @@
-@DigitalShoppingCenter.Api_HostAddress = http://localhost:5047
-
-GET {{DigitalShoppingCenter.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+###
+GET http://localhost:5047/catalog
 
 ###
+GET http://localhost:5047/catalog/0
+
+###
+POST http://localhost:5047/catalog
+Content-Type: application/json
+
+{
+  "name": "Shoes",
+  "description": "Ohio State shoes",
+  "brand": "Nike",
+  "price": 129.99
+}
+
+###
+POST http://localhost:5047/catalog/1/ratings
+Content-Type: application/json
+
+{
+  "stars": 5,
+  "userName": "Cameron",
+  "review": "Great shoes"
+}
+
+###
+PUT http://localhost:5047/catalog/1
+Content-Type: application/json
+
+{
+  "name": "Updated Shoes",
+  "description": "Updated description",
+  "brand": "Nike",
+  "price": 149.99
+}
+
+###
+DELETE http://localhost:5047/catalog/1
