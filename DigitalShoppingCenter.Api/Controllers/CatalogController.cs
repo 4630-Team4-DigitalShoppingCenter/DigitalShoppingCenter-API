@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DigitalShoppingCenter.Domain.Catalog;
 using DigitalShoppingCenter.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace DigitalShoppingCenter.Api.Controllers;
 
@@ -44,25 +45,50 @@ public class CatalogController : ControllerBase
 
     [HttpPost("{id:int}/ratings")]
     public IActionResult PostRating(int id, [FromBody] Rating rating)
-    {
-        var item = new Item("Shirt", "Ohio State shirt.", "Nike", 29.99m);
-        item.Id = id;
-        item.AddRating(rating);
+{
+    var item = _db.Items.Find(id);
 
-        return Ok(item);
+    if (item == null)
+    {
+        return NotFound();
     }
+
+    item.AddRating(rating);
+    _db.SaveChanges();
+
+    return Ok(item);
+}
 
     [HttpPut("{id:int}")]
-    public IActionResult UpdateItem(int id, Item updatedItem)
+    public IActionResult PutItem(int id, [FromBody] Item item)
+{
+    if (id != item.Id)
     {
-        updatedItem.Id = id;
-
-        return Ok(updatedItem);
+        return BadRequest();
     }
+
+    if (_db.Items.Find(id) == null)
+    {
+        return NotFound();
+    }
+
+    _db.Entry(item).State = EntityState.Modified;
+    _db.SaveChanges();
+
+    return NoContent();
+}
 
     [HttpDelete("{id:int}")]
     public IActionResult DeleteItem(int id)
     {
-        return NoContent();
+        var item = _db.Items.Find(id);
+        if (item == null)
+        {
+            return NotFound();
+        }
+        _db.Items.Remove(item);
+        _db.SaveChanges();
+
+        return Ok();
     }
 }
