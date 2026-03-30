@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DigitalShoppingCenter.Domain\DigitalShoppingCenter.Domain.csproj" />
+    <ProjectReference Include="..\DigitalShoppingCenter.Data\DigitalShoppingCenter.Data.csproj" />
   </ItemGroup>
 
 </Project>
