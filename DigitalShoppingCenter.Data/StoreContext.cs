@@ -1,4 +1,5 @@
 using DigitalShoppingCenter.Domain.Catalog;
+using DigitalShoppingCenter.Domain.Orders;
 using Microsoft.EntityFrameworkCore;
 
 namespace DigitalShoppingCenter.Data
@@ -11,7 +12,8 @@ namespace DigitalShoppingCenter.Data
         }
 
         public DbSet<Item> Items { get; set; }
-
+        
+        public DbSet<Order> Orders {get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
