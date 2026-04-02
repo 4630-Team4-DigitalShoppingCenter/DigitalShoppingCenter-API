@@ -19,7 +19,7 @@ public class CatalogController : ControllerBase
     [HttpGet]
     public IActionResult GetItems()
     {
-        return Ok(_db.Items);
+        return Ok(_db.Items.ToList());
     }
 
     [HttpGet("{id:int}")]
