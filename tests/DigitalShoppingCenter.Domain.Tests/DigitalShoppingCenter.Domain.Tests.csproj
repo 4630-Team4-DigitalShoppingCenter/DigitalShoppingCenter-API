@@ -15,4 +15,8 @@
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\DigitalShoppingCenter.Domain\DigitalShoppingCenter.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
