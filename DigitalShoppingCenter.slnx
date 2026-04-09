@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/tests/">
+    <Project Path="tests/DigitalShoppingCenter.Domain.Tests/DigitalShoppingCenter.Domain.Tests.csproj" />
+  </Folder>
   <Project Path="DigitalShoppingCenter.Api/DigitalShoppingCenter.Api.csproj" />
   <Project Path="DigitalShoppingCenter.Data/DigitalShoppingCenter.Data.csproj" />
   <Project Path="DigitalShoppingCenter.Domain/DigitalShoppingCenter.Domain.csproj" />
