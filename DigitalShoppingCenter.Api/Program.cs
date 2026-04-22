@@ -3,14 +3,20 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var dbPath = Path.Combine(builder.Environment.ContentRootPath, "store.db");
-Console.WriteLine($"USING DB: {dbPath}");
-
-// Add services to the container.
-builder.Services.AddControllers();
 builder.Services.AddDbContext<StoreContext>(options =>
-    options.UseSqlite($"Data Source={dbPath}"));
+    options.UseSqlite("Data Source=./store.db"));
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:3000")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
+
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -22,12 +28,15 @@ using (var scope = app.Services.CreateScope())
     db.Database.EnsureCreated();
 }
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 

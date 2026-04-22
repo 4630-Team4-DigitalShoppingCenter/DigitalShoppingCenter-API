@@ -13,11 +13,11 @@ namespace DigitalShoppingCenter.Data
 
         public DbSet<Item> Items { get; set; }
 
-        public DbSet<Rating> Ratings {get; set; }
-        
-        public DbSet<Order> Orders {get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
-        public DbSet<OrderItem> OrderItems {get; set; }
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderItem> OrderItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
