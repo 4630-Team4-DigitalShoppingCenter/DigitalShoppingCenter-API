@@ -38,3 +38,14 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:5047/catalog/1
+
+###
+curl --request POST \
+  --url https://dev-lej4lxrlupd1kl8m.us.auth0.com/oauth/token \
+  --header 'content-type: application/json' \
+  --data '{
+    "client_id":"Y7JO4hQIEkBtxxQ2SAJQtJX2d0EKwcT6",
+    "client_secret":"k4Us5S9l-8lkYiLxURURKuZ-dYscPh2f-WGG2bRP_or96hDbXwMoMTbuJHhz9Wuv",
+    "audience":"https://digital-shopping-center",
+    "grant_type":"client_credentials"
+  }'

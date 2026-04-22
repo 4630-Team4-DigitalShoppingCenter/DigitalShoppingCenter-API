@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using DigitalShoppingCenter.Domain.Catalog;
 using DigitalShoppingCenter.Data;
 using Microsoft.EntityFrameworkCore;
@@ -79,6 +80,7 @@ public class CatalogController : ControllerBase
 }
 
     [HttpDelete("{id:int}")]
+    [Authorize("delete:catalog")]
     public IActionResult DeleteItem(int id)
     {
         var item = _db.Items.Find(id);
